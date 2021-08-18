@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_samples/widgets/row.dart';
 
 import 'widgets/icon.dart';
 import 'widgets/text.dart';
@@ -79,7 +80,12 @@ class MyHomePage extends StatelessWidget {
             ),
             GridItemChild(
               title: 'Row',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RowWidget(title: 'Row')));
+              },
             ),
             GridItemChild(
               title: 'Expanded',
