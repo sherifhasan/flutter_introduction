@@ -6,6 +6,7 @@ import 'package:widgets_samples/widgets/gesture_detector.dart';
 import 'package:widgets_samples/widgets/image.dart';
 import 'package:widgets_samples/widgets/list_view.dart';
 import 'package:widgets_samples/widgets/row.dart';
+import 'package:widgets_samples/widgets/single_child_scroll_view.dart';
 import 'package:widgets_samples/widgets/text_field.dart';
 
 import 'widgets/icon.dart';
@@ -167,8 +168,14 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             GridItemChild(
-              title: 'SingleChildScrollView',
-              onPressed: () {},
+              title: 'Single Child Scroll View',
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SingleChildScrollViewWidget(
+                            title: 'SingleChildScrollView')));
+              },
             ),
             GridItemChild(
               title: 'Card',
