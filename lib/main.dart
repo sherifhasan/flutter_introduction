@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_samples/widgets/image.dart';
 import 'package:widgets_samples/widgets/row.dart';
 
 import 'widgets/icon.dart';
 import 'widgets/text.dart';
 
 void main() {
+  //this fun is to start our app.
   runApp(MyApp());
 }
 
@@ -12,11 +14,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    //every app should have a MaterialApp widget.
     return MaterialApp(
+      //the title of the app.
       title: 'Flutter Demo',
+      //this attr is to show or hide debug banner from  your app.
+      debugShowCheckedModeBanner: false,
+      //with this attr you can customize your app theme if u want.
       theme: ThemeData(
+        // this attr is to customize the primary swatch of the app.
         primarySwatch: Colors.blue,
       ),
+      //every material app should have a home widget which is the start of is app (eg. Splash screen).
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -33,11 +42,28 @@ class MyHomePage extends StatelessWidget {
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
           title: Text('Session 2 flutter widgets'),
+          centerTitle: true,
+          elevation: 5,
+          actions: [
+            Icon(Icons.search),
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: Icon(Icons.clean_hands_rounded),
+            )
+          ],
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15)),
+              side: BorderSide(color: Colors.orange, width: 3)),
         ),
         body: GridView.count(
           crossAxisCount: 3,
           mainAxisSpacing: 5,
           crossAxisSpacing: 5,
+          shrinkWrap: true,
+          reverse: false,
+          childAspectRatio: 1,
           padding: EdgeInsets.all(8),
           children: [
             GridItemChild(
@@ -60,7 +86,12 @@ class MyHomePage extends StatelessWidget {
             ),
             GridItemChild(
               title: 'Image',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ImageWidget(title: 'Image')));
+              },
             ),
             GridItemChild(
               title: 'TextField',
