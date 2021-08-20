@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_samples/widgets/image.dart';
 import 'package:widgets_samples/widgets/row.dart';
+import 'package:widgets_samples/widgets/text_field.dart';
 
 import 'widgets/icon.dart';
 import 'widgets/text.dart';
@@ -95,7 +96,12 @@ class MyHomePage extends StatelessWidget {
             ),
             GridItemChild(
               title: 'TextField',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => TextFieldWidget(title: 'TextField')));
+              },
             ),
             GridItemChild(
               title: 'Button',
