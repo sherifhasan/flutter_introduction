@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_samples/widgets/button.dart';
+import 'package:widgets_samples/widgets/gesture_detector.dart';
 import 'package:widgets_samples/widgets/image.dart';
 import 'package:widgets_samples/widgets/row.dart';
 import 'package:widgets_samples/widgets/text_field.dart';
@@ -101,19 +102,28 @@ class MyHomePage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => TextFieldWidget(title: 'TextField')));
+                        builder: (context) =>
+                            TextFieldWidget(title: 'TextField')));
               },
             ),
             GridItemChild(
               title: 'Button',
-              onPressed: () { Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ButtonWidget(title: 'TextField')));},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ButtonWidget(title: 'Button')));
+              },
             ),
             GridItemChild(
-              title: 'GestureDetector',
-              onPressed: () {},
+              title: 'Gesture Detector',
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            GestureDetectorWidget(title: 'Gesture Detector')));
+              },
             ),
             GridItemChild(
               title: 'Column',
