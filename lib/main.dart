@@ -4,6 +4,7 @@ import 'package:widgets_samples/widgets/column.dart';
 import 'package:widgets_samples/widgets/expanded.dart';
 import 'package:widgets_samples/widgets/gesture_detector.dart';
 import 'package:widgets_samples/widgets/image.dart';
+import 'package:widgets_samples/widgets/list_view.dart';
 import 'package:widgets_samples/widgets/row.dart';
 import 'package:widgets_samples/widgets/text_field.dart';
 
@@ -157,13 +158,18 @@ class MyHomePage extends StatelessWidget {
             ),
             GridItemChild(
               title: 'ListView',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            ListViewWidget(title: 'ListView')));
+              },
             ),
             GridItemChild(
               title: 'SingleChildScrollView',
               onPressed: () {},
             ),
-
             GridItemChild(
               title: 'Card',
               onPressed: () {},
