@@ -163,10 +163,7 @@ class MyHomePage extends StatelessWidget {
               title: 'SingleChildScrollView',
               onPressed: () {},
             ),
-            GridItemChild(
-              title: 'GridView',
-              onPressed: () {},
-            ),
+
             GridItemChild(
               title: 'Card',
               onPressed: () {},
