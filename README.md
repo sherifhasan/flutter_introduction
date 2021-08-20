@@ -13,3 +13,5 @@ Samples of important flutter widgets that you are going to need in your journey 
 |-----------------------------------------------|-----------------------------------------------|
 |![Image](screen_shots/gesture_detector.png) [Gesture Detector](https://github.com/sherifhasan/widgets_samples/blob/master/lib/widgets/gesture_detector.dart) | ![Image](screen_shots/column.png) [Column](https://github.com/sherifhasan/widgets_samples/blob/master/lib/widgets/column.dart)|
 |-----------------------------------------------|-----------------------------------------------|
+|![Image](screen_shots/row.png) [Row](https://github.com/sherifhasan/widgets_samples/blob/master/lib/widgets/row.dart) | ![Image](screen_shots/expanded.png) [Expanded](https://github.com/sherifhasan/widgets_samples/blob/master/lib/widgets/expanded.dart)|
+|-----------------------------------------------|-----------------------------------------------|
