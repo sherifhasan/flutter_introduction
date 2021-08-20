@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_samples/widgets/button.dart';
+import 'package:widgets_samples/widgets/card.dart';
 import 'package:widgets_samples/widgets/column.dart';
 import 'package:widgets_samples/widgets/expanded.dart';
 import 'package:widgets_samples/widgets/gesture_detector.dart';
@@ -179,7 +180,11 @@ class MyHomePage extends StatelessWidget {
             ),
             GridItemChild(
               title: 'Card',
-              onPressed: () {},
+              onPressed: () { Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => CardWidget(
+                          title: 'Card')));},
             ),
             GridItemChild(
               title: 'Container',
