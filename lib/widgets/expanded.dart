@@ -15,7 +15,6 @@ class ExpandedWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-
               Row(
                 children: [
                   Expanded(

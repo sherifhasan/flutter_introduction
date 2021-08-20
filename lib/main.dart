@@ -185,7 +185,8 @@ class MyHomePage extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ContainerWidget(title: 'Container')));
+                        builder: (context) =>
+                            ContainerWidget(title: 'Container')));
               },
             ),
             GridItemChild(
