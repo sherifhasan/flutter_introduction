@@ -15,18 +15,7 @@ class ExpandedWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(
-                children: [
-                  Text(
-                    'Hello this is regular Text widget which need to be handled to not make overflow problem.',
-                    style: TextStyle(fontSize: 15, color: Colors.blue),
-                  ),
-                  Icon(Icons.done)
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
+
               Row(
                 children: [
                   Expanded(
