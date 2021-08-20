@@ -19,3 +19,7 @@ Samples of important flutter widgets that you are going to need in your journey 
 | ![Image](screen_shots/listview.png) [ListView](https://github.com/sherifhasan/widgets_samples/blob/master/lib/widgets/list_view.dart) | ![Image](screen_shots/singlechildscrollview.png) [SingleChildScrollView](https://github.com/sherifhasan/widgets_samples/blob/master/lib/widgets/single_child_scroll_view.dart)|
 |-----------------------------------------------|-----------------------------------------------|
 | ![Image](screen_shots/container.png) [Container](https://github.com/sherifhasan/widgets_samples/blob/master/lib/widgets/container.dart) | ![Image](screen_shots/card.png) [Card](https://github.com/sherifhasan/widgets_samples/blob/master/lib/widgets/card.dart)|
+
+### Created & Maintained By
+
+[Ahmed Nafea](https://github.com/ahmednafea) [Sherif Hasan](https://github.com/sherifhasan)
