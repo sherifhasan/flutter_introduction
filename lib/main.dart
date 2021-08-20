@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgets_samples/widgets/button.dart';
 import 'package:widgets_samples/widgets/card.dart';
 import 'package:widgets_samples/widgets/column.dart';
+import 'package:widgets_samples/widgets/container.dart';
 import 'package:widgets_samples/widgets/expanded.dart';
 import 'package:widgets_samples/widgets/gesture_detector.dart';
 import 'package:widgets_samples/widgets/image.dart';
@@ -179,32 +180,22 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             GridItemChild(
-              title: 'Card',
-              onPressed: () { Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CardWidget(
-                          title: 'Card')));},
-            ),
-            GridItemChild(
               title: 'Container',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ContainerWidget(title: 'Card')));
+              },
             ),
             GridItemChild(
-              title: 'SizedBox',
-              onPressed: () {},
-            ),
-            GridItemChild(
-              title: 'Center',
-              onPressed: () {},
-            ),
-            GridItemChild(
-              title: 'SizedBox',
-              onPressed: () {},
-            ),
-            GridItemChild(
-              title: 'Padding',
-              onPressed: () {},
+              title: 'Card',
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CardWidget(title: 'Card')));
+              },
             ),
           ],
         ));
@@ -235,15 +226,3 @@ class GridItemChild extends StatelessWidget {
     );
   }
 }
-/*
-
-
-14- ListView 15m
-15- SinglChildScrollView 5m
-16- GridView 15m
-17- Card 5m
-18- Container 5m
-19- Center 2m
-20- SizedBox 2m
-21- Padding 2m
- */
