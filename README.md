@@ -22,4 +22,4 @@ Samples of important flutter widgets that you are going to need in your journey 
 
 ### Created & Maintained By
 
-[Ahmed Nafea](https://github.com/ahmednafea) [Sherif Hasan](https://github.com/sherifhasan)
+[Sherif Hasan](https://github.com/sherifhasan) [Ahmed Nafea](https://github.com/ahmednafea) 
