@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_samples/widgets/button.dart';
+import 'package:widgets_samples/widgets/column.dart';
 import 'package:widgets_samples/widgets/gesture_detector.dart';
 import 'package:widgets_samples/widgets/image.dart';
 import 'package:widgets_samples/widgets/row.dart';
@@ -127,7 +128,12 @@ class MyHomePage extends StatelessWidget {
             ),
             GridItemChild(
               title: 'Column',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ColumnWidget(title: 'Column')));
+              },
             ),
             GridItemChild(
               title: 'Row',
