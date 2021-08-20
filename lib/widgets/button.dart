@@ -12,7 +12,8 @@ class ButtonWidget extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
                 style: ButtonStyle(
@@ -38,9 +39,8 @@ class ButtonWidget extends StatelessWidget {
                 style: ButtonStyle(
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        )),
-
+                      borderRadius: BorderRadius.circular(15.0),
+                    )),
                     padding: MaterialStateProperty.all<EdgeInsets>(
                         EdgeInsets.symmetric(vertical: 10, horizontal: 30))),
                 child: Text(
@@ -53,7 +53,12 @@ class ButtonWidget extends StatelessWidget {
                 onPressed: () {
                   print("Sign in button has been pressed ;)");
                 }),
-            IconButton(onPressed: (){print("Icon button has been pressed ;)");}, icon: Icon(Icons.send),)
+            IconButton(
+              onPressed: () {
+                print("Icon button has been pressed ;)");
+              },
+              icon: Icon(Icons.send),
+            )
           ],
         ),
       ),
