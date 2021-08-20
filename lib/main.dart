@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_samples/widgets/button.dart';
 import 'package:widgets_samples/widgets/column.dart';
+import 'package:widgets_samples/widgets/expanded.dart';
 import 'package:widgets_samples/widgets/gesture_detector.dart';
 import 'package:widgets_samples/widgets/image.dart';
 import 'package:widgets_samples/widgets/row.dart';
@@ -146,7 +147,13 @@ class MyHomePage extends StatelessWidget {
             ),
             GridItemChild(
               title: 'Expanded',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            ExpandedWidget(title: 'Expanded')));
+              },
             ),
             GridItemChild(
               title: 'ListView',
