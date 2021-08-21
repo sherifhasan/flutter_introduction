@@ -15,7 +15,9 @@ class ButtonWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // this button type was has elevation from the screen which make some shadow around it.
             ElevatedButton(
+              // this attr change the button style like borders, its radius, background color & padding.
                 style: ButtonStyle(
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
@@ -25,6 +27,10 @@ class ButtonWidget extends StatelessWidget {
                         MaterialStateProperty.all<Color>(Colors.blue),
                     padding: MaterialStateProperty.all<EdgeInsets>(
                         EdgeInsets.symmetric(vertical: 10, horizontal: 30))),
+                /*
+                here add the child u want to be in the button.
+                if u have more than on child u can make the child widget is row and inside the row children put what u want.
+                */
                 child: Text(
                   "Sign Up",
                   style: TextStyle(
@@ -32,9 +38,11 @@ class ButtonWidget extends StatelessWidget {
                       fontSize: 16.0,
                       fontWeight: FontWeight.w600),
                 ),
+                // on pressed fun which u can add what u want the button do when it was pressed.
                 onPressed: () {
                   print("Sign up button has been pressed ;)");
                 }),
+            // this button type was has no elevation from the screen (Flat button).
             TextButton(
                 style: ButtonStyle(
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -53,10 +61,12 @@ class ButtonWidget extends StatelessWidget {
                 onPressed: () {
                   print("Sign in button has been pressed ;)");
                 }),
+            // this button we can use for search icon and so on.
             IconButton(
               onPressed: () {
                 print("Icon button has been pressed ;)");
               },
+              // the icon attr can take any widget not icons only but the behaviour will be ugly a little bit.
               icon: Icon(Icons.send),
             )
           ],

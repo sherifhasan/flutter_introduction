@@ -51,8 +51,11 @@ class MyHomePage extends StatelessWidget {
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
           title: Text('Session 2 flutter widgets'),
+          // this attr make our appbar title centered.
           centerTitle: true,
+          // this attr change the elevation level.
           elevation: 5,
+          // here you can add some widgets to the action of the appbar like search iconButton etc.
           actions: [
             Icon(Icons.search),
             Padding(
@@ -60,6 +63,7 @@ class MyHomePage extends StatelessWidget {
               child: Icon(Icons.clean_hands_rounded),
             )
           ],
+          // this attr can change the shape of the appBar and add border to it.
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(15),
@@ -67,17 +71,31 @@ class MyHomePage extends StatelessWidget {
               side: BorderSide(color: Colors.orange, width: 3)),
         ),
         body: GridView.count(
+          // this attr specify the count of widgets you want to show in a row in the vertical scroll direction & in a column in the horizontal direction.
           crossAxisCount: 3,
+          // this attr change the vertical margin between children if scroll direction is vertical & horizontal margin if it was horizontal.
           mainAxisSpacing: 5,
+          // this attr change the horizontal margin between children if scroll direction is vertical & vertical margin if it was horizontal.
           crossAxisSpacing: 5,
+          // this attr make the space of gridview limit to the only required space which is useFull to handle spaces in the view in some cases.
           shrinkWrap: true,
+          // this attr reverse children order like (if we have this list [1, 2, 3], it will be shown as [3, 2, 1]).
           reverse: false,
+          // this attr change the child size aspect ratio, decrease it under 1 like 0.8 to make child more taller thane it's regular size.
           childAspectRatio: 1,
+          // here we can add padding to the whole children.
           padding: EdgeInsets.all(8),
           children: [
+            // this widget is a simple widget we had created below to use gridview but u can use any another widget u want.
             GridItemChild(
+              // this is the title of our customized widget because this widget we had put in it only text child.
               title: 'Icon',
+              // this is the onPressed fun which we can put in it what we want this child do when user press on it.
               onPressed: () {
+                /*
+                this line show u how to navigate from screen to another one.
+                the navigator is the controller which responsible on adding and removing the widgets to the app widget tree.
+                */
                 Navigator.push(
                     context,
                     MaterialPageRoute(
