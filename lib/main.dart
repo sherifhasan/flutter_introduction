@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_samples/networking/api/category.dart';
 import 'package:widgets_samples/widgets/button.dart';
 import 'package:widgets_samples/widgets/card.dart';
 import 'package:widgets_samples/widgets/column.dart';
@@ -214,6 +215,13 @@ class MyHomePage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => CardWidget(title: 'Card')));
+              },
+            ),
+            GridItemChild(
+              title: 'Api sample',
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ApiSample()));
               },
             ),
           ],
