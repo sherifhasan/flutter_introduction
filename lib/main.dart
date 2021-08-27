@@ -1,5 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:widgets_samples/networking/api/category.dart';
 import 'package:widgets_samples/widgets/button.dart';
 import 'package:widgets_samples/widgets/card.dart';
 import 'package:widgets_samples/widgets/column.dart';
@@ -16,6 +16,8 @@ import 'widgets/icon.dart';
 import 'widgets/text.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp();
   //this fun is to start our app.
   runApp(MyApp());
 }
@@ -216,12 +218,13 @@ class MyHomePage extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => CardWidget(title: 'Card')));
               },
-            ),
-            GridItemChild(
-              title: 'Api sample',
+            ),GridItemChild(
+              title: 'Firebase DB Sample',
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ApiSample()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CardWidget(title: 'Firebase DB')));
               },
             ),
           ],

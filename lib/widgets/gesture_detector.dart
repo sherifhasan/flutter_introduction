@@ -26,6 +26,9 @@ class GestureDetectorWidget extends StatelessWidget {
                 onTap: () {
                   print("onTap has been Pressed ;)");
                 },
+                onLongPress: () {
+                  print("onLong has been Pressed ;)");
+                },
                 onDoubleTap: () {
                   print("onDoubleTap has been Pressed ;)");
                 }),

@@ -14,7 +14,7 @@ class ColumnWidget extends StatelessWidget {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+            children: [
               FlutterLogo(),
               Text(
                 'Hello this is Text widget inside Column',

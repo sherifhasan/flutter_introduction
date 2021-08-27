@@ -18,7 +18,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
 
   final FocusNode emailFocusNode = FocusNode();
 
-  bool validateEmail = true,validatePassword = true;
+  bool validateEmail = true, validatePassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +41,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                 style: TextStyle(fontSize: 16.0, color: Colors.black),
                 decoration: InputDecoration(
                   fillColor: Colors.grey[300],
+                  filled: true,
                   hintText: "Email",
                   labelText: "Email",
                   labelStyle: TextStyle(color: Colors.blue[800]),
@@ -50,9 +51,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
                       style: BorderStyle.solid,
                     ),
                   ),
-                  errorText: !validateEmail ? "Email is wrong" : null,
+                  errorText: validateEmail ? null : "Email is wrong",
                   prefixIcon: Icon(Icons.email, color: Colors.blue[800]),
-                  filled: true,
                   contentPadding: EdgeInsets.all(16),
                 ),
               ),

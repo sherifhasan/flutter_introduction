@@ -13,10 +13,10 @@ class TextWidget extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          'Example',
+          'Example Flutter Example Flutter Example Flutter Example Flutter Example Flutter Example Flutter Example Flutter',
           textAlign: TextAlign.center,
           style: TextStyle(
-              color: Colors.red, fontSize: 22, fontWeight: FontWeight.bold),
+              color: Colors.blue, fontSize: 22, fontWeight: FontWeight.bold),
         ),
       ),
     );

@@ -12,7 +12,7 @@ class IconWidget extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        child: Icon(Icons.location_pin, color: Colors.blue, size: 64),
+        child: Icon(Icons.location_pin, color: Colors.blue,size: 48, ),
       ),
     );
   }
