@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_samples/models/item_model.dart';
 
 import 'restful_api.dart';
 
@@ -10,15 +11,15 @@ class ApiSample extends StatefulWidget {
 }
 
 class _ApiSampleState extends State<ApiSample> {
-  var categoriesList = <String>[];
+  var itemsList = <Item>[];
 
   @override
   void initState() {
     super.initState();
-    getCategories().then((value) {
+    getItems().then((value) {
       if (value != null) {
         setState(() {
-          categoriesList = value;
+          itemsList = value;
         });
       }
     });
@@ -30,26 +31,35 @@ class _ApiSampleState extends State<ApiSample> {
       appBar: AppBar(
         title: Text('Api Sample'),
       ),
-      body: categoriesList.isEmpty
+      body: itemsList.isEmpty
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : ListView.builder(
-              itemBuilder: (BuildContext context, int i) {
-                return Card(
+          : GridView.count(crossAxisCount: 2,
+              children: itemsList.map((item) =>
+                Card(
                   elevation: 3,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      categoriesList[i],
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Image.network(item.image,height: 80,),
+                        Text(
+                          item.title,
+                          textAlign: TextAlign.center,maxLines: 2,
+                          style:
+                              TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),Text(
+                          "${item.price} L.E",
+                          textAlign: TextAlign.center,
+                          style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
                   ),
-                );
-              },
-              itemCount: categoriesList.length,
+                )).toList(),
+
               padding: const EdgeInsets.all(16),
               scrollDirection: Axis.vertical,
             ),

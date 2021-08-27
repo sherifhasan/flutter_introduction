@@ -2,13 +2,14 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:widgets_samples/models/item_model.dart';
 
-Future<List<String>?> getCategories() async {
+Future<List<Item>?> getItems() async {
   final client = Dio();
-  final url = 'https://fakestoreapi.com/products/categories';
+  final url = 'https://fakestoreapi.com/products';
   try {
     final response = await client.get(url,
-        options: Options(responseType: ResponseType.bytes));
+        options: Options(responseType: ResponseType.json));
     if (response.statusCode == 200 && response.data != null) {
       return compute(parseResponse, response.data);
     } else {
@@ -22,5 +23,5 @@ Future<List<String>?> getCategories() async {
   return null;
 }
 
-List<String> parseResponse(response) => List<String>.from(
-    json.decode(utf8.decode(response as List<int>)).map((x) => x));
+List<Item> parseResponse(response) =>
+    List<Item>.from(response.map((x) => Item.fromJson(x)));
