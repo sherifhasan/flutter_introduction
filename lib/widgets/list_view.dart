@@ -93,7 +93,7 @@ class ListViewWidget extends StatelessWidget {
           reverse: false,
           padding: EdgeInsets.all(10),
           scrollDirection: Axis.vertical,
-          children: widgetList.map((text) {
+          children: widgetList.map((String text) {
             return Row(
               children: [
                 Text(
