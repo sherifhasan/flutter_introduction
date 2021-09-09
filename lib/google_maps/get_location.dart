@@ -11,10 +11,27 @@ class _GetLocationState extends State<GetLocation> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        location,
-        style: TextStyle(fontSize: 18, color: Colors.blue),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Get Location'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              location,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 18, color: Colors.blue),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                getCurrentLocation();
+              },
+              child: Text('Get location'),
+            )
+          ],
+        ),
       ),
     );
   }
