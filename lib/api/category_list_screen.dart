@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_samples/models/item_model.dart';
 
+import 'models/item_model.dart';
 import 'restful_api.dart';
 
 class ApiSample extends StatefulWidget {
@@ -35,31 +35,38 @@ class _ApiSampleState extends State<ApiSample> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : GridView.count(crossAxisCount: 2,
-              children: itemsList.map((item) =>
-                Card(
-                  elevation: 3,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Image.network(item.image,height: 80,),
-                        Text(
-                          item.title,
-                          textAlign: TextAlign.center,maxLines: 2,
-                          style:
-                              TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                        ),Text(
-                          "${item.price} L.E",
-                          textAlign: TextAlign.center,
-                          style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          : GridView.count(
+              crossAxisCount: 2,
+              children: itemsList
+                  .map((item) => Card(
+                        elevation: 3,
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Image.network(
+                                item.image,
+                                height: 80,
+                              ),
+                              Text(
+                                item.title,
+                                textAlign: TextAlign.center,
+                                maxLines: 2,
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                "${item.price} L.E",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
                         ),
-                      ],
-                    ),
-                  ),
-                )).toList(),
-
+                      ))
+                  .toList(),
               padding: const EdgeInsets.all(16),
               scrollDirection: Axis.vertical,
             ),

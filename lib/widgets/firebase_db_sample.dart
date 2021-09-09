@@ -1,7 +1,7 @@
 // import 'dart:collection';
 //
 // import 'package:flutter/material.dart';
-// import 'package:widgets_samples/models/media_model.dart';
+// import 'package:widgets_samples/api.models/media_model.dart';
 //
 // class FirebaseDBSample extends StatefulWidget {
 //   FirebaseDBSample({required this.title});

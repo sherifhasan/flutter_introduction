@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:widgets_samples/models/item_model.dart';
+
+import 'models/item_model.dart';
 
 Future<List<Item>?> getItems() async {
   final client = Dio();
