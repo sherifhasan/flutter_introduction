@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:widgets_samples/api/category_list_screen.dart';
-import 'package:widgets_samples/google_maps/get_location.dart';
+import 'package:widgets_samples/google_maps/google_map_screen.dart';
 import 'package:widgets_samples/widgets/button.dart';
 import 'package:widgets_samples/widgets/card.dart';
 import 'package:widgets_samples/widgets/column.dart';
@@ -47,6 +48,8 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
+  late LocationPermission permission = LocationPermission.denied;
+  bool serviceEnabled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -238,14 +241,61 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             GridItemChild(
-              title: 'Location',
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => GetLocation()));
+              title: 'Google Map',
+              onPressed: () async {
+                if (serviceEnabled) {
+                  if (permission == LocationPermission.always ||
+                      permission == LocationPermission.whileInUse) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GoogleMapScreen()));
+                  } else {
+                    getCurrentLocation(context);
+                  }
+                } else {
+                  getCurrentLocation(context);
+                }
               },
             ),
           ],
         ));
+  }
+
+  Future<void> getCurrentLocation(BuildContext context) async {
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      // Location services are not enabled don't continue
+      // accessing the position and request users of the
+      // App to enable the location services.
+      Geolocator.openLocationSettings();
+      return Future.error('Location services are disabled.');
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        // Permissions are denied, next time you could try
+        // requesting permissions again (this is also where
+        // Android's shouldShowRequestPermissionRationale
+        // returned true. According to Android guidelines
+        // your App should show an explanatory UI now.
+
+        return Future.error('Location permissions are denied');
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      // Permissions are denied forever, handle appropriately.
+
+      return Future.error(
+          'Location permissions are permanently denied, we cannot request permissions.');
+    }
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => GoogleMapScreen()));
   }
 }
 
