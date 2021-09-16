@@ -30,9 +30,11 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
         title: Text('Google Map'),
       ),
       body: GoogleMap(
+        padding: EdgeInsets.all(10),
         mapType: MapType.satellite,
-        trafficEnabled: true,
+        trafficEnabled: false,
         myLocationEnabled: true,
+        zoomControlsEnabled: true,
         minMaxZoomPreference: MinMaxZoomPreference(5, 20),
         liteModeEnabled: false,
         circles: circles,
@@ -41,15 +43,16 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
         polylines: polyLines,
         initialCameraPosition: CameraPosition(
           target: LatLng(37.42796133580664, -122.085749655962),
-          zoom: 14.4746,
+          zoom: 0,
         ),
         onTap: (value) async {
           final GoogleMapController controller = await _controller.future;
+
           setState(() {
             controller.animateCamera(CameraUpdate.newCameraPosition(
                 CameraPosition(
                     target: LatLng(value.latitude, value.longitude),
-                    zoom: 19)));
+                    zoom: 11)));
             markers.clear();
             markers.add(Marker(
                 markerId: MarkerId("pin marker"),
@@ -133,7 +136,9 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                 ],
                 zIndex: 1,
                 consumeTapEvents: true,
-                onTap: () {debugPrint("polygon 2 is tapped");},
+                onTap: () {
+                  debugPrint("polygon 2 is tapped");
+                },
                 strokeWidth: 2,
                 fillColor: Colors.green[300]!,
                 strokeColor: Colors.yellow[600]!,

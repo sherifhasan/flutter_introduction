@@ -26,6 +26,12 @@
     <key>NSLocationWhenInUseUsageDescription</key>
 	<string>The App requires access to the device location.</string>
 
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>https</string>
+  <string>http</string>
+</array>
+
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

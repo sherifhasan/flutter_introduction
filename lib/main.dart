@@ -14,6 +14,7 @@ import 'package:widgets_samples/widgets/row.dart';
 import 'package:widgets_samples/widgets/single_child_scroll_view.dart';
 import 'package:widgets_samples/widgets/text_field.dart';
 
+import 'url_launcher/launcher_sample.dart';
 import 'widgets/icon.dart';
 import 'widgets/text.dart';
 
@@ -77,188 +78,197 @@ class MyHomePage extends StatelessWidget {
                   bottomRight: Radius.circular(15)),
               side: BorderSide(color: Colors.orange, width: 3)),
         ),
-        body: GridView.count(
-          // this attr specify the count of widgets you want to show in a row in the vertical scroll direction & in a column in the horizontal direction.
-          crossAxisCount: 3,
-          // this attr change the vertical margin between children if scroll direction is vertical & horizontal margin if it was horizontal.
-          mainAxisSpacing: 5,
-          // this attr change the horizontal margin between children if scroll direction is vertical & vertical margin if it was horizontal.
-          crossAxisSpacing: 5,
-          // this attr make the space of gridview limit to the only required space which is useFull to handle spaces in the view in some cases.
-          shrinkWrap: true,
-          // this attr reverse children order like (if we have this list [1, 2, 3], it will be shown as [3, 2, 1]).
-          reverse: false,
-          // this attr change the child size aspect ratio, decrease it under 1 like 0.8 to make child more taller thane it's regular size.
-          childAspectRatio: 1,
-          // here we can add padding to the whole children.
-          padding: EdgeInsets.all(8),
-          children: [
-            // this widget is a simple widget we had created below to use gridview but u can use any another widget u want.
-            GridItemChild(
-              // this is the title of our customized widget because this widget we had put in it only text child.
-              title: 'Icon',
-              // this is the onPressed fun which we can put in it what we want this child do when user press on it.
-              onPressed: () {
-                /*
-                this line show u how to navigate from screen to another one.
-                the navigator is the controller which responsible on adding and removing the widgets to the app widget tree.
-                */
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => IconWidget(title: 'Icon')));
-              },
-            ),
-            GridItemChild(
-              title: 'Text',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => TextWidget(title: 'Text')));
-              },
-            ),
-            GridItemChild(
-              title: 'Image',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ImageWidget(title: 'Image')));
-              },
-            ),
-            GridItemChild(
-              title: 'TextField',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            TextFieldWidget(title: 'TextField')));
-              },
-            ),
-            GridItemChild(
-              title: 'Button',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ButtonWidget(title: 'Button')));
-              },
-            ),
-            GridItemChild(
-              title: 'Gesture Detector',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            GestureDetectorWidget(title: 'Gesture Detector')));
-              },
-            ),
-            GridItemChild(
-              title: 'Column',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ColumnWidget(title: 'Column')));
-              },
-            ),
-            GridItemChild(
-              title: 'Row',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => RowWidget(title: 'Row')));
-              },
-            ),
-            GridItemChild(
-              title: 'Expanded',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            ExpandedWidget(title: 'Expanded')));
-              },
-            ),
-            GridItemChild(
-              title: 'ListView',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            ListViewWidget(title: 'ListView')));
-              },
-            ),
-            GridItemChild(
-              title: 'Single Child Scroll View',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => SingleChildScrollViewWidget(
-                            title: 'SingleChildScrollView')));
-              },
-            ),
-            GridItemChild(
-              title: 'Container',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            ContainerWidget(title: 'Container')));
-              },
-            ),
-            GridItemChild(
-              title: 'Card',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CardWidget(title: 'Card')));
-              },
-            ),
-            GridItemChild(
-              title: 'Firebase DB Sample',
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            CardWidget(title: 'Firebase DB')));
-              },
-            ),
-            GridItemChild(
-              title: 'Api sample',
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ApiSample()));
-              },
-            ),
-            GridItemChild(
-              title: 'Google Map',
-              onPressed: () async {
-                if (serviceEnabled) {
-                  if (permission == LocationPermission.always ||
-                      permission == LocationPermission.whileInUse) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => GoogleMapScreen()));
+        body: SafeArea(
+          child: GridView.count(
+            // this attr specify the count of widgets you want to show in a row in the vertical scroll direction & in a column in the horizontal direction.
+            crossAxisCount: 3,
+            // this attr change the vertical margin between children if scroll direction is vertical & horizontal margin if it was horizontal.
+            mainAxisSpacing: 5,
+            // this attr change the horizontal margin between children if scroll direction is vertical & vertical margin if it was horizontal.
+            crossAxisSpacing: 5,
+            // this attr make the space of gridview limit to the only required space which is useFull to handle spaces in the view in some cases.
+            shrinkWrap: true,
+            // this attr reverse children order like (if we have this list [1, 2, 3], it will be shown as [3, 2, 1]).
+            reverse: false,
+            // this attr change the child size aspect ratio, decrease it under 1 like 0.8 to make child more taller thane it's regular size.
+            childAspectRatio: 1,
+            // here we can add padding to the whole children.
+            padding: EdgeInsets.all(8),
+            children: [
+              // this widget is a simple widget we had created below to use gridview but u can use any another widget u want.
+              GridItemChild(
+                // this is the title of our customized widget because this widget we had put in it only text child.
+                title: 'Icon',
+                // this is the onPressed fun which we can put in it what we want this child do when user press on it.
+                onPressed: () {
+                  /*
+                  this line show u how to navigate from screen to another one.
+                  the navigator is the controller which responsible on adding and removing the widgets to the app widget tree.
+                  */
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => IconWidget(title: 'Icon')));
+                },
+              ),
+              GridItemChild(
+                title: 'Text',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TextWidget(title: 'Text')));
+                },
+              ),
+              GridItemChild(
+                title: 'Image',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ImageWidget(title: 'Image')));
+                },
+              ),
+              GridItemChild(
+                title: 'TextField',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              TextFieldWidget(title: 'TextField')));
+                },
+              ),
+              GridItemChild(
+                title: 'Button',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ButtonWidget(title: 'Button')));
+                },
+              ),
+              GridItemChild(
+                title: 'Gesture Detector',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              GestureDetectorWidget(title: 'Gesture Detector')));
+                },
+              ),
+              GridItemChild(
+                title: 'Column',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ColumnWidget(title: 'Column')));
+                },
+              ),
+              GridItemChild(
+                title: 'Row',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => RowWidget(title: 'Row')));
+                },
+              ),
+              GridItemChild(
+                title: 'Expanded',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ExpandedWidget(title: 'Expanded')));
+                },
+              ),
+              GridItemChild(
+                title: 'ListView',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ListViewWidget(title: 'ListView')));
+                },
+              ),
+              GridItemChild(
+                title: 'Single Child Scroll View',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SingleChildScrollViewWidget(
+                              title: 'SingleChildScrollView')));
+                },
+              ),
+              GridItemChild(
+                title: 'Container',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              ContainerWidget(title: 'Container')));
+                },
+              ),
+              GridItemChild(
+                title: 'Card',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CardWidget(title: 'Card')));
+                },
+              ),
+              GridItemChild(
+                title: 'Firebase DB Sample',
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              CardWidget(title: 'Firebase DB')));
+                },
+              ),
+              GridItemChild(
+                title: 'Api sample',
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ApiSample()));
+                },
+              ),
+              GridItemChild(
+                title: 'Google Map',
+                onPressed: () async {
+                  if (serviceEnabled) {
+                    if (permission == LocationPermission.always ||
+                        permission == LocationPermission.whileInUse) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => GoogleMapScreen()));
+                    } else {
+                      getCurrentLocation(context);
+                    }
                   } else {
                     getCurrentLocation(context);
                   }
-                } else {
-                  getCurrentLocation(context);
-                }
-              },
-            ),
-          ],
+                },
+              ),
+              GridItemChild(
+                title: 'Url launcher sample',
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LauncherSample()));
+                },
+              ),
+            ],
+          ),
         ));
   }
 
@@ -293,9 +303,7 @@ class MyHomePage extends StatelessWidget {
           'Location permissions are permanently denied, we cannot request permissions.');
     }
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => GoogleMapScreen()));
+        context, MaterialPageRoute(builder: (context) => GoogleMapScreen()));
   }
 }
 
