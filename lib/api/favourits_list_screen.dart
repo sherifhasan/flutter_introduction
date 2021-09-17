@@ -1,55 +1,41 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:widgets_samples/api/favourits_list_screen.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:widgets_samples/api/category_list_screen.dart';
 import 'package:widgets_samples/main.dart';
 
 import 'models/item_model.dart';
 import 'restful_api.dart';
 
-class ApiSample extends StatefulWidget {
+class FavouriteListScreen extends StatefulWidget {
   @override
-  _ApiSampleState createState() => _ApiSampleState();
+  _FavouriteListScreenState createState() => _FavouriteListScreenState();
 }
 
-class _ApiSampleState extends State<ApiSample> {
-  var itemsList = <Item>[];
-
+class _FavouriteListScreenState extends State<FavouriteListScreen> {
   @override
   void initState() {
     super.initState();
-    getItems().then((value) {
-      if (value != null) {
-        setState(() {
-          itemsList = value;
-        });
-      }
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Api Sample'),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => FavouriteListScreen()));
-              },
-              icon: Icon(Icons.favorite,
-                  color:
-                      favouriteBox.keys.isNotEmpty ? Colors.red : Colors.white))
-        ],
+        title: Text('Favourites'),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => ApiSample()));
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
       ),
-      body: itemsList.isEmpty
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
-          : GridView.count(
+      body: favouriteBox.values.isNotEmpty
+          ? GridView.count(
               crossAxisCount: 2,
-              children: itemsList
+              children: favouriteBox.values
                   .map((item) => Card(
                         elevation: 3,
                         child: Padding(
@@ -84,15 +70,9 @@ class _ApiSampleState extends State<ApiSample> {
                               ),
                               GestureDetector(
                                   onTap: () {
-                                    if (favouriteBox.keys.contains(item.id)) {
-                                      setState(() {
-                                        favouriteBox.delete(item.id);
-                                      });
-                                    } else {
-                                      setState(() {
-                                        favouriteBox.put(item.id, item);
-                                      });
-                                    }
+                                    setState(() {
+                                      favouriteBox.delete(item.id);
+                                    });
                                   },
                                   child: Icon(
                                     favouriteBox.keys.contains(item.id)
@@ -109,6 +89,19 @@ class _ApiSampleState extends State<ApiSample> {
                   .toList(),
               padding: const EdgeInsets.all(16),
               scrollDirection: Axis.vertical,
+            )
+          : Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(CupertinoIcons.heart_slash, size: 64),
+                  SizedBox(height: 20),
+                  Text(
+                    "You have no favourites yet",
+                    style: TextStyle(fontSize: 18),
+                  )
+                ],
+              ),
             ),
     );
   }

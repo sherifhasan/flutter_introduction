@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:widgets_samples/api/category_list_screen.dart';
+import 'package:widgets_samples/api/models/item_model.dart';
 import 'package:widgets_samples/google_maps/google_map_screen.dart';
 import 'package:widgets_samples/widgets/button.dart';
 import 'package:widgets_samples/widgets/card.dart';
@@ -18,10 +20,14 @@ import 'url_launcher/launcher_sample.dart';
 import 'widgets/icon.dart';
 import 'widgets/text.dart';
 
-void main() {
+Box<Item> favouriteBox = Hive.box<Item>("favourites");
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //Firebase.initializeApp();
-  //this fun is to start our app.
+  await Hive.initFlutter();
+  Hive.registerAdapter(ItemAdapter());
+  await Hive.openBox<Item>("favourites");
   runApp(MyApp());
 }
 
@@ -154,8 +160,8 @@ class MyHomePage extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              GestureDetectorWidget(title: 'Gesture Detector')));
+                          builder: (context) => GestureDetectorWidget(
+                              title: 'Gesture Detector')));
                 },
               ),
               GridItemChild(
@@ -263,8 +269,10 @@ class MyHomePage extends StatelessWidget {
               GridItemChild(
                 title: 'Url launcher sample',
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LauncherSample()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LauncherSample()));
                 },
               ),
             ],

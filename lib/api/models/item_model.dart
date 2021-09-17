@@ -1,5 +1,10 @@
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+
+part 'item_model.g.dart';
+
+@HiveType(typeId: 1)
 class Item {
   Item({
     required this.id,
@@ -9,11 +14,15 @@ class Item {
     required this.image,
   });
 
+  @HiveField(0)
   int id;
+  @HiveField(1)
   String title;
+  @HiveField(2)
   double price;
+  @HiveField(3)
   String description;
-
+  @HiveField(4)
   String image;
 
   factory Item.fromRawJson(String str) => Item.fromJson(json.decode(str));

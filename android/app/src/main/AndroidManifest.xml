@@ -2,7 +2,23 @@
     package="com.example.widgets_samples">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+    <queries>
+        <!-- If your app opens https URLs -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <!-- If your app makes calls -->
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+            <data android:scheme="tel" />
+        </intent>
+        <!-- If your app emails -->
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="*/*" />
+        </intent>
+    </queries>
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="widgets_samples">
@@ -43,22 +59,6 @@
             android:value="AIzaSyBjvRQc9G9vnJoZ86dnEn4HdETWHpjeWqg" />
 
 
-        <queries>
-            <!-- If your app opens https URLs -->
-            <intent>
-                <action android:name="android.intent.action.VIEW" />
-                <data android:scheme="https" />
-            </intent>
-            <!-- If your app makes calls -->
-            <intent>
-                <action android:name="android.intent.action.DIAL" />
-                <data android:scheme="tel" />
-            </intent>
-            <!-- If your app emails -->
-            <intent>
-                <action android:name="android.intent.action.SEND" />
-                <data android:mimeType="*/*" />
-            </intent>
-        </queries>
+
     </application>
 </manifest>
