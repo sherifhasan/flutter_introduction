@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:widgets_samples/api/category_list_screen.dart';
 import 'package:widgets_samples/api/models/item_model.dart';
 import 'package:widgets_samples/google_maps/google_map_screen.dart';
@@ -64,7 +65,7 @@ class MyHomePage extends StatelessWidget {
         appBar: AppBar(
           // Here we take the value from the MyHomePage object that was created by
           // the App.build method, and use it to set our appbar title.
-          title: Text('Session 2 flutter widgets'),
+          title: Text('flutter widgets'),
           // this attr make our appbar title centered.
           centerTitle: true,
           // this attr change the elevation level.
@@ -74,7 +75,12 @@ class MyHomePage extends StatelessWidget {
             Icon(Icons.search),
             Padding(
               padding: EdgeInsets.all(8),
-              child: Icon(Icons.clean_hands_rounded),
+              child: IconButton(
+                icon: Icon(Icons.next_week),
+                onPressed: () {
+                  launch("https://flashtech-team.web.app/#/");
+                },
+              ),
             )
           ],
           // this attr can change the shape of the appBar and add border to it.
