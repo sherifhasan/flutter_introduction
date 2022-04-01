@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TextFieldWidget extends StatefulWidget {
   TextFieldWidget({required this.title});
@@ -19,6 +20,19 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
   final FocusNode emailFocusNode = FocusNode();
 
   bool validateEmail = true, validatePassword = true;
+
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((pref) {
+      if (pref.containsKey("Email")) {
+        emailTextFieldController.text = pref.get("Email").toString();
+      }
+      if (pref.containsKey("Password")) {
+        passwordTextFieldController.text = pref.get("Password").toString();
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,12 +76,18 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
               child: TextField(
                 focusNode: passwordFocusNode,
                 controller: passwordTextFieldController,
-                onSubmitted: (value) {
+                onSubmitted: (value) async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
                   setState(() {
                     validateEmail =
                         emailTextFieldController.value.text.length > 10;
                     validatePassword =
                         passwordTextFieldController.value.text.length > 6;
+                    prefs.setString(
+                        "Email", emailTextFieldController.value.text);
+                    prefs.setString(
+                        "Password", passwordTextFieldController.value.text);
                   });
                 },
                 keyboardType: TextInputType.text,

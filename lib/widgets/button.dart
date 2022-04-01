@@ -59,6 +59,7 @@ class ButtonWidget extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 ),
                 onPressed: () {
+
                   print("Sign in button has been pressed ;)");
                 }),
             // this button we can use for search icon and so on.
